@@ -7,6 +7,12 @@ const countryInput = document.getElementById("country-input"); // input-ul pentr
 // getUsers();
 //getCountry("germany");
 
+async function getWeather(country) {
+  const response = await fetch(`https://api.tomorrow.io/v4/weather/realtime?${country}`);
+  const weather = await response.json();
+  console.log(weather);
+}
+
 async function getUsers() {
   const respone = await fetch("https://random-data-api.com/api/v2/users");
   const user = await respone.json();
@@ -58,7 +64,11 @@ function addCountrytoUI(country) {
     <h2>${country.name.common}</h2>
     <p>Capital: ${country.capital[0]}</p>
     <p>Population: ${country.population}</p>
+    <p>Weather in ${country.capital[0]}: </p>
     `;
+
+  const countryTime = document.createElement("p");
+  countryTime.innerHTML;
 
   countryElement.appendChild(flag);
   countryElement.appendChild(countryData);
