@@ -5,7 +5,7 @@ const clearUserListButton = document.getElementById("clear-list"); //buton clear
 const countryInput = document.getElementById("country-input"); // input-ul pentru tari
 
 // getUsers();
-getCountry("romania");
+//getCountry("germany");
 
 async function getUsers() {
     const respone = await fetch("https://random-data-api.com/api/v2/users");
@@ -20,7 +20,7 @@ async function getCountry(cName) {
     const data = await respone.json();
     console.log(data);
 
-    addCountrytoUI(data);
+    addCountrytoUI(data[0]);
 }
 
 function addUserToUI(user) {
@@ -71,4 +71,9 @@ getNewUserButton.addEventListener("click", () => {
 
 clearUserListButton.addEventListener("click", () => {
     userContainer.innerHTML = "";
+});
+
+countryInput.addEventListener("change", (event) => {
+    console.log(event.target.value);
+    getCountry(event.target.value);
 });
