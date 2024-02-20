@@ -64,7 +64,7 @@ function addCountrytoUI(country) {
     <h2>${country.name.common}</h2>
     <p>Capital: ${country.capital[0]}</p>
     <p>Population: ${country.population}</p>
-    <p>Weather in ${country.capital[0]}: </p>
+    <p>Weather in ${country.capital[0]}: ${getWeather(country.name.common[0])}</p>
     `;
 
   const countryTime = document.createElement("p");
