@@ -91,4 +91,5 @@ clearUserListButton.addEventListener("click", () => {
 countryInput.addEventListener("change", (event) => {
     console.log(event.target.value);
     getCountry(event.target.value);
+    //getWeather(country.capital[0]);
 });
