@@ -5,38 +5,39 @@ const clearUserListButton = document.getElementById("clear-list"); //buton clear
 const countryInput = document.getElementById("country-input"); // input-ul pentru tari
 
 // getUsers();
-//getCountry("germany");
+// getCountry("germany");
 
-async function getWeather(country) {
-  const response = await fetch(`https://api.tomorrow.io/v4/weather/realtime?${country}`);
-  const weather = await response.json();
-  console.log(weather);
+async function getWeather(capital) {
+    const response = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${capital}`);
+    const weather = await response.json();
+    console.log(weather);
+    return weather;
 }
 
 async function getUsers() {
-  const respone = await fetch("https://random-data-api.com/api/v2/users");
-  const user = await respone.json();
-  console.log(user);
+    const respone = await fetch("https://random-data-api.com/api/v2/users");
+    const user = await respone.json();
+    console.log(user);
 
-  addUserToUI(user);
+    addUserToUI(user);
 }
 
 async function getCountry(cName) {
-  const respone = await fetch(`https://restcountries.com/v3.1/name/${cName}`);
-  const data = await respone.json();
-  console.log(data);
+    const respone = await fetch(`https://restcountries.com/v3.1/name/${cName}`);
+    const data = await respone.json();
+    console.log(data);
 
-  addCountrytoUI(data[0]);
+    addCountrytoUI(data[0]);
 }
 
 function addUserToUI(user) {
-  const userElement = document.createElement("div");
+    const userElement = document.createElement("div");
 
-  const avatar = document.createElement("img");
-  avatar.setAttribute("src", user.avatar);
+    const avatar = document.createElement("img");
+    avatar.setAttribute("src", user.avatar);
 
-  const userData = document.createElement("p");
-  userData.innerHTML = `
+    const userData = document.createElement("p");
+    userData.innerHTML = `
     <h2>${user.first_name} ${user.last_name}</h2>
     <p>Country: ${user.address.country}</p>
     <p>City: ${user.address.city}</p>
@@ -46,45 +47,48 @@ function addUserToUI(user) {
     <p>Gender: ${user.gender}</p>
     `;
 
-  userElement.appendChild(avatar);
-  userElement.appendChild(userData);
+    userElement.appendChild(avatar);
+    userElement.appendChild(userData);
 
-  userContainer.appendChild(userElement);
+    userContainer.appendChild(userElement);
 }
 
-function addCountrytoUI(country) {
-  const countryElement = document.createElement("div");
+async function addCountrytoUI(country) {
+    const countryElement = document.createElement("div");
 
-  const flag = document.createElement("img");
-  flag.setAttribute("src", country.flags.svg);
-  flag.classList.add("country-image");
+    const flag = document.createElement("img");
+    flag.setAttribute("src", country.flags.svg);
+    flag.classList.add("country-image");
 
-  const countryData = document.createElement("p");
-  countryData.innerHTML = `
+    const weatherData = await getWeather(country.capital[0]);
+
+    const countryData = document.createElement("p");
+    countryData.innerHTML = `
     <h2>${country.name.common}</h2>
     <p>Capital: ${country.capital[0]}</p>
     <p>Population: ${country.population}</p>
-    <p>Weather in ${country.capital[0]}: ${getWeather(country.name.common[0])}</p>
+    <p>Weather in ${country.capital[0]}: ${weatherData}°C</p>
     `;
+    //<p>Weather in ${country.capital[0]}: ${weatherData.data.values.temperature}°C</p>
 
-  const countryTime = document.createElement("p");
-  countryTime.innerHTML;
+    const countryTime = document.createElement("p");
+    countryTime.innerHTML;
 
-  countryElement.appendChild(flag);
-  countryElement.appendChild(countryData);
+    countryElement.appendChild(flag);
+    countryElement.appendChild(countryData);
 
-  userContainer.appendChild(countryElement);
+    userContainer.appendChild(countryElement);
 }
 
 getNewUserButton.addEventListener("click", () => {
-  getUsers();
+    getUsers();
 });
 
 clearUserListButton.addEventListener("click", () => {
-  userContainer.innerHTML = "";
+    userContainer.innerHTML = "";
 });
 
 countryInput.addEventListener("change", (event) => {
-  console.log(event.target.value);
-  getCountry(event.target.value);
+    console.log(event.target.value);
+    getCountry(event.target.value);
 });
