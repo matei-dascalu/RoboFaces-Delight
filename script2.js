@@ -9,7 +9,21 @@ const countryInput = document.getElementById("country-input"); // input-ul pentr
 
 async function getWeather(capital) {
     // ADAUGI API KEY DUPA EGAL
-    const response = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${capital}&apikey=`);
+    const response =
+        await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${capital}&${y234iuasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f6237846fb2398764fb2938764rt62374tr62734r234}
+${f62378uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149fb2398764fb2938764rt62374tr62734r234}
+${h5iyubf3uiasdgfyuiasbdfiuahbsdiufahbsuyd234234b349f23149f6237846fb2398764fb2938764rt62374tr62734r234}
+${fb23iyubf34uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5ib349f23149f6237846fb2398764fb2938764rt62374tr62734r234}
+${fb2398f6uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f62378462398764rt62374tr62734r234}
+${fb23987ih5iyubf3uiasdgfyuiasbdfiuahbsdiufahbsuyd234234b349f23149f6237846fb2938764rt62374tr62734r234}
+${fb2398764fb62378uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f2346rt62374tr62734r234}
+${fb29387r6uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f6237846fb2398764ft62374tr62734r234}
+${fb2398764rt62374tr6uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f62378462398764r62734r234}
+${fb2398764rt6237ftr62378uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f6237846fb2398764r62734r234}
+${fb2398764rt62374tr62734r2uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f6237846fb2398764r234}
+${fb23987f64uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f62378462398764rt62374tr62734r234}
+${fb2398764rt62374tr62734r234uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f6237846fb2938764r234}
+${fb2398764rt62374tr62734r234uiasdgfyuiasbdfiuahbsdiufahbsuyd234234h5iyubf34782b349f23149f6237846fb2938764ft62734r234}`);
     const weather = await response.json();
     console.log(weather);
     return weather;
@@ -57,7 +71,6 @@ function addUserToUI(user) {
 async function addCountrytoUI(country) {
     const countryElement = document.createElement("div");
 
-
     const flag = document.createElement("img");
     flag.setAttribute("src", country.flags.svg);
     flag.classList.add("country-image");
@@ -73,7 +86,6 @@ async function addCountrytoUI(country) {
     `;
     //<p>Weather in ${country.capital[0]}: ${weatherData.data.values.temperature}°C</p>
 
-
     const countryTime = document.createElement("p");
     countryTime.innerHTML;
 
@@ -82,11 +94,11 @@ async function addCountrytoUI(country) {
 
     userContainer.appendChild(countryElement);
 
-    if (weatherData.data.values.temperature <= 15){
-        countryElement.classList.add("weather-image-cold")
-        } else {
-        countryElement.classList.add("weather-image-warm")
-        }
+    if (weatherData.data.values.temperature <= 15) {
+        countryElement.classList.add("weather-image-cold");
+    } else {
+        countryElement.classList.add("weather-image-warm");
+    }
 }
 
 getNewUserButton.addEventListener("click", () => {
