@@ -8,6 +8,7 @@ const countryInput = document.getElementById("country-input"); // input-ul pentr
 // getCountry("germany");
 
 async function getWeather(capital) {
+    // ADAUGI API KEY DUPA EGAL
     const response = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${capital}&apikey=`);
     const weather = await response.json();
     console.log(weather);
