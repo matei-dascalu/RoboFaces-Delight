@@ -105,7 +105,7 @@ body {
     border-radius: 10px;
 }
 .weather-image-cold{
-    background-image: linear-gradient(90deg,rgba(116, 116, 116, 0.6),rgba(116, 116, 116, 0.6)), url(assets/cold.jpg);
+    background-image: linear-gradient(90deg,rgba(116, 116, 116, 0.4),rgba(116, 116, 116, 0.4)), url(assets/cold.jpg);
     background-size: cover;
     opacity: 0.8;
     max-width: 750px;
@@ -117,7 +117,7 @@ body {
     gap: 1rem;
 }
 .weather-image-warm{
-    background-image:linear-gradient(90deg,rgba(116, 116, 116, 0.6),rgba(116, 116, 116, 0.6)), url(assets/warm.jpg);
+    background-image:linear-gradient(90deg,rgba(116, 116, 116, 0.4),rgba(116, 116, 116, 0.4)), url(assets/warm.jpg);
     background-size: cover;
     opacity: 0.8;
     max-width: 750px;
