@@ -8,7 +8,7 @@ const countryInput = document.getElementById("country-input"); // input-ul pentr
 // getCountry("germany");
 
 async function getWeather(capital) {
-    const response = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${capital}`);
+    const response = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${capital}&apikey=`);
     const weather = await response.json();
     console.log(weather);
     return weather;
@@ -56,6 +56,7 @@ function addUserToUI(user) {
 async function addCountrytoUI(country) {
     const countryElement = document.createElement("div");
 
+
     const flag = document.createElement("img");
     flag.setAttribute("src", country.flags.svg);
     flag.classList.add("country-image");
@@ -67,9 +68,10 @@ async function addCountrytoUI(country) {
     <h2>${country.name.common}</h2>
     <p>Capital: ${country.capital[0]}</p>
     <p>Population: ${country.population}</p>
-    <p>Weather in ${country.capital[0]}: ${weatherData}°C</p>
+    <p>Weather in ${country.capital[0]}: ${parseInt(weatherData.data.values.temperature)}°C</p>
     `;
     //<p>Weather in ${country.capital[0]}: ${weatherData.data.values.temperature}°C</p>
+
 
     const countryTime = document.createElement("p");
     countryTime.innerHTML;
@@ -78,6 +80,12 @@ async function addCountrytoUI(country) {
     countryElement.appendChild(countryData);
 
     userContainer.appendChild(countryElement);
+
+    if (weatherData.data.values.temperature <= 15){
+        countryElement.classList.add("weather-image-cold")
+        } else {
+        countryElement.classList.add("weather-image-warm")
+        }
 }
 
 getNewUserButton.addEventListener("click", () => {
